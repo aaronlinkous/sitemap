@@ -19,6 +19,7 @@ html, body {
 			white-space: nowrap;
 			line-height: .5em;
 			padding: 1em;
+			cursor: pointer;
 			-moz-user-select: none;
 			-webkit-user-select: none;
 			user-select: none;
@@ -29,19 +30,19 @@ html, body {
 				margin: 0 0 $span_margin;
 
 				li {
-					margin: $span_margin/2;
+					margin: $span_margin/2 0;
 					padding: .85em;
 				}
 			}
 
 			&.parent {
-				padding-right: .95em;
+				padding-right: 1.95em;
 
 				&:after {
 					content: "\2013";
 					font-weight: bold;
 					position: absolute;
-					right: .85em;
+					right: .95em;
 				}
 
 				&.closed {

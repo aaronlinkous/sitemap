@@ -904,37 +904,38 @@ html, body {
   white-space: nowrap;
   line-height: .5em;
   padding: 1em;
+  cursor: pointer;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
 }
-/* line 26, ../scss/_base.scss */
+/* line 27, ../scss/_base.scss */
 .canvas [class^="span"] ul li + ul {
   width: 85%;
   font-size: .85em;
   margin: 0 0 20px;
 }
-/* line 31, ../scss/_base.scss */
+/* line 32, ../scss/_base.scss */
 .canvas [class^="span"] ul li + ul li {
-  margin: 10px;
+  margin: 10px 0;
   padding: .85em;
 }
-/* line 37, ../scss/_base.scss */
+/* line 38, ../scss/_base.scss */
 .canvas [class^="span"] ul li.parent {
-  padding-right: .95em;
+  padding-right: 1.95em;
 }
-/* line 40, ../scss/_base.scss */
+/* line 41, ../scss/_base.scss */
 .canvas [class^="span"] ul li.parent:after {
   content: "\2013";
   font-weight: bold;
   position: absolute;
-  right: .85em;
+  right: .95em;
 }
-/* line 48, ../scss/_base.scss */
+/* line 49, ../scss/_base.scss */
 .canvas [class^="span"] ul li.parent.closed + ul {
   display: none;
 }
-/* line 52, ../scss/_base.scss */
+/* line 53, ../scss/_base.scss */
 .canvas [class^="span"] ul li.parent.closed:after {
   content: "+";
 }
