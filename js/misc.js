@@ -3,7 +3,7 @@ function is_parent() {
 		$(this).next().is("ul") ? $(this).addClass("parent") : $(this).removeClass("parent");
 	});
 }
-var clicks = 0, timer, node;
+var clicks = 0, timer, node, active;
 $(document).ready(function(){
 	is_parent();
 
@@ -11,7 +11,7 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
-	$("li").on("click", function() {
+	$("li").on("click", function(e) {
 		clicks++;
 		node = $(this);
 
@@ -22,7 +22,15 @@ $(document).ready(function(){
 			}, 250);
 		} else {
 			clearTimeout(timer);
-			alert(node);
+			    $.fn.SimpleModal({
+			        btn_ok: 'Confirm button',
+			        model: 'confirm',
+			        callback: function(){
+			            alert('Action confirm!');
+			        },
+			        title: 'Confirm Modal Title',
+			        contents: 'Lorem ipsum dolor sit amet...'
+			    }).addButton("fart", "btn").showModal();
 			clicks = 0;
 		}
 	});
