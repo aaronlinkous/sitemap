@@ -938,10 +938,3 @@ html, body {
 .canvas [class^="span"] ul li.parent.closed:after {
   content: "+";
 }
-
-@media only screen and (max-width: 480px) {
-  /* line 64, ../scss/_base.scss */
-  [class^="span"] li + ul {
-    display: none;
-  }
-}
