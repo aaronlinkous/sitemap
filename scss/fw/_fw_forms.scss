@@ -1,0 +1,113 @@
+input, textarea, button, select {
+	background-color: #fff;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: $form_font_size;
+	border: $border_width solid $border_color;
+	box-shadow: none;
+	border-radius: $border_radius;
+	line-height: 20px;
+	padding: 5px 5px 4px;
+	height: $input_height;
+	outline: none;
+	color: $form_color;
+
+	&::-webkit-input-placeholder, &::-moz-placeholder, &::placeholder {
+		color: $border_color;
+		font-size: 12px;
+	}
+
+	&:focus {
+		border-color: $theme_color;
+		z-index: 2;
+	}
+}
+
+button {
+	line-height: $input_height - $border_width*2;
+	padding: 0;
+
+	&.normal {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	span {
+		float: left;
+	}
+
+	span + i {
+		margin: -1px -10px 1px 0;
+	}
+
+	> i {
+		margin: -1px 0 1px -10px;
+	}
+}
+
+select {
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	color: $border_color;
+	font-size: 12px;
+
+	&.has_value {
+		color: $form_color;
+		font-size: $form_font_size;
+	}
+}
+
+input {
+	&[type='number']{
+		&::-webkit-outer-spin-button, &::-webkit-inner-spin-button,
+		&::-moz-outer-spin-button, &::-moz-inner-spin-button {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+		}
+	}
+
+	&[type='radio'], &[type='checkbox'] {
+		height: auto;
+		margin-right: 5px;
+	}
+}
+
+label {
+	font-size: $form_font_size;
+}
+
+@media only screen and (max-width : 480px) {
+	input{
+		&[type="text"], &[type="email"], &[type="search"], &[type="password"] {
+			-webkit-appearance: caret;
+			-moz-appearance: caret;
+		}
+	}
+
+	button {
+		&.cta[class*="pull_"] {
+			height: $input_height*1.5;
+			clear: both;
+			float: none;
+			width: 100%;
+			text-align: center;
+			margin: $row_margin 0;
+			font-size: $form_font_size*1.125;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			span {
+				float: none;
+			}
+
+			i {
+				display: none;
+			}
+		}
+	}
+}

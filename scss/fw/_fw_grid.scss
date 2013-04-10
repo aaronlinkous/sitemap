@@ -1,0 +1,94 @@
+.container {
+	width: $container_width;
+
+	&.centered {
+		margin: 0 auto;
+	}
+}
+
+[class*="span"] {
+	float: left;
+	margin-left: $span_margin;
+}
+
+.row {
+	position: relative;
+	margin-bottom: $row_margin;
+	margin-left: -$span_margin;
+	@extend .clear;
+
+	> [class*="span"] {
+		&:last-child:after {
+			clear:both;
+		}
+	}
+}
+
+@for $i from 1 through $columns {
+	.span#{$i} {
+		width: #{($i * ($span_width+$span_margin)) + $span_width - ($span_width+$span_margin)}
+	}
+
+	.offset#{$i} {
+		margin-left: #{($i * ($span_width+$span_margin)) + $span_margin}
+	}
+}
+
+@media only screen and (max-width : 480px) {
+
+	.container {
+		width: 100%;
+	}
+	
+	[class*="span"] {
+		margin: 0 0 $m_row_margin;
+		float: none;
+		width: 100%;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.full_width {
+		width: auto;
+		margin-left: -$m_span_margin;
+		margin-right: -$m_span_margin;
+		border-radius: 0;
+	}
+
+	.row {
+		margin: 0 $m_span_margin $m_row_margin;
+
+		[class*="split"] {
+			> * {
+				float: left;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				margin-bottom: $m_row_margin;
+	
+				&:first-child {
+					padding-right: $m_span_margin / 2;
+				}
+	
+				&:last-child {
+					padding-left: $m_span_margin / 2;
+				}
+			}
+		}
+
+		.split2 > * {
+			width: 50%;
+		}
+
+		.split3 > * {
+			width: 33.33%;
+
+			&:nth-child(2){
+				padding: 0 $m_span_margin / 2;
+			}
+		}
+	}
+
+}
