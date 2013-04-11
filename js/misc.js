@@ -3,7 +3,7 @@ function is_parent() {
 		$(this).next().is("ul") ? $(this).addClass("parent") : $(this).removeClass("parent");
 	});
 }
-var clicks = 0, timer, node, active;
+var clicks = 0, timer, node, crumbs;
 $(document).ready(function(){
 	is_parent();
 
@@ -22,15 +22,17 @@ $(document).ready(function(){
 			}, 250);
 		} else {
 			clearTimeout(timer);
+				crumbs = node.closest("ul").prev().text();
+
 			    $.fn.SimpleModal({
 			        btn_ok: 'Confirm button',
 			        model: 'confirm',
 			        callback: function(){
 			            alert('Action confirm!');
 			        },
-			        title: 'Confirm Modal Title',
+			        title: crumbs,
 			        contents: 'Lorem ipsum dolor sit amet...'
-			    }).addButton("fart", "btn").showModal();
+			    }).showModal();
 			clicks = 0;
 		}
 	});

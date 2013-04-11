@@ -63,7 +63,7 @@ provides:
             offsetTop:     null,
             overlayOpacity:.3,
             overlayColor:  "#000000",
-            width:         400,
+            width:         "span4",
             draggable:     true,
             keyEsc:        true,
             overlayClick:  true,
@@ -73,12 +73,12 @@ provides:
             btn_ok:        "OK", // Label
             btn_cancel:    "Cancel", // Label
             template:"<div class=\"simple-modal-header\"> \
-                <h1>{_TITLE_}</h1> \
+                {_TITLE_} \
             </div> \
                 <div class=\"simple-modal-body\"> \
-                <div class=\"contents\">{_CONTENTS_}</div> \
+                <div class=\"contents row\">{_CONTENTS_}</div> \
             </div> \
-                <div class=\"simple-modal-footer\"></div>"
+                <div class=\"simple-modal-footer row\"></div>"
         },
 
         SimpleModal: function(options) {
@@ -113,14 +113,14 @@ provides:
                 break;
             case "confirm":
                 // Add button confirm
-                this.addButton(this.options.btn_ok, "btn primary btn-margin", function() {
+                this.addButton(this.options.btn_ok, "primary normal pull_right cta button", function() {
                     // in oppose to original version, i'm not catching exceptions
                     // i want to know what's eventually goes wrong
                     self.options.callback();
                     self.hideModal();
                 });
                 // Add button cancel
-                this.addButton(this.options.btn_cancel, "btn secondary");
+                this.addButton(this.options.btn_cancel, "ghosted normal pull_right button");
             case "modal":
 				node = this._drawWindow(this.options);
                 break;
@@ -131,7 +131,7 @@ provides:
             }
 			if (node) {
                 // Custom size Modal
-                node.css('width', this.options.width);
+                node.addClass(this.options.width);
 
                 // Hide Header &&/|| Footer
                 if (this.options.hideHeader) node.addClass("hide-header");
@@ -223,7 +223,7 @@ provides:
          * @return node HTML
          */
         addButton: function(label, classe, clickEvent) {
-            var bt = $('<a>').attr({
+            var bt = $('<button>').attr({
                 "title" : label,
                 "class" : classe
             }).click(clickEvent ? function(e) { clickEvent.call(self, e); } : self.hideModal).text(label);

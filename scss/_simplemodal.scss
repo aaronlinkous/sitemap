@@ -1,4 +1,4 @@
-#simple-modal-overlay{
+#simple-modal-overlay {
 	position: fixed ;
 	display: block;
 	z-index:  99998;
@@ -6,159 +6,84 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #000000;
+	background-color: $dark_color;
 }
 
-.simple-modal{
-	width: 600px;
-	left: 20px;
+.simple-modal {
 	top: 20px;
 	position: absolute;
 	position: fixed;
 	margin: 0;
 	color: $dark_color;
-	font-family: sans-serif;
 	font-size: $form_font_size;
-	background-color: $light_color;
-	border: 1px solid rgba($dark_color, 0.5);
-	box-shadow: 0 0 3px rgba(#000, 0.6);
+	background-color: $background;
 	z-index: 99999;
 	border-radius: $border_radius;
 
-	.simple-modal-header{
-		padding: 5px 15px;
+	.simple-modal-header {
+		@extend .ghosted;
+		font-weight: bold;
+		line-height: .5em;
+		padding: 1em;
 		margin: 0;
-		border-bottom: 1px solid rgba($light_color, .3);
+	}
 
-    h1{
-      margin: 0;
-      color: #404040;
-      font-size: 18px;
-      font-weight: bold;
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      line-height: 36px;
-    }
-  }
-  
-  a.close{
-    position:  absolute;
-    right:  15px;
-    top:  15px;
-    color:  #999;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size:  17px;
-    font-weight: normal;
-    line-height:  10px;
-    text-decoration: none;
-  }
-  
-  a.close:hover{
-      color: #444;
-  }
-  
-  .simple-modal-body{
-    padding:  15px;
+	a.close {
+		position:  absolute;
+		right: .5em;
+		top: .25em;
+		color: $dark_color;
+		font-size: 17px;
+		font-weight: normal;
+		text-decoration: none;
+	}
 
-    div.contents{
-      overflow: hidden;
-    }
-    
-    /* Extra style */
-    p{
-      font-size: 13px;
-      font-weight: normal;
-      color: #606060;
-      line-height: 18px;
-      
-      img{
-        display: block;
-        margin: 0 auto 10px auto;
-      }
-    }
-  }
-  
-  .simple-modal-footer{
-    display: block;
-    background-color:  #F5F5F5;
-    padding:  14px 15px 15px;
-    border-top:  1px solid #EEEEEE;
-    border-radius: 0 0 $border_radius $border_radius;
-    box-shadow:          inset 0 1px 0 #FFF;
-    zoom:  1;
-    margin-bottom:  0;
-    text-align: center;
-    
-    a.btn{
-    	text-decoration: none;
-    	cursor:  pointer;
-    	display:  inline-block;
-    	background-repeat:  no-repeat;
-    	padding:  5px 14px 6px;
-    	color:  #333;
-    	font-size:  13px;
-    	line-height:  normal;
-    	border:  1px solid transparent;
-      -webkit-transition:  0.2s linear all;
-      -moz-transition:  0.2s linear all;
-      transition:  0.2s linear all;
-    	@extend rounded-corners;
-    }
+	.simple-modal-body {
+		padding:  1em;
+		box-sizing: border-box;
 
-    a.btn.primary{
-    	color:  #FFF;
-    	text-shadow:  0 1px 0 rgba(0, 0, 0, 0.25);
-    	background-color:  #999;
-    	background-repeat:  repeat-x;
-    	margin-right: 15px;
-      &:hover{
-      	border:  1px solid #444;
-        background-color:  #444;
-      }
-    }
-  
-    a.btn.secondary{
-      padding:  5px 2px 6px;
-      &:hover{
-        color: #999;
-      }
-    }
-  }
+		div.contents {
+			overflow: hidden;
+		}
+	}
+
+	.simple-modal-footer {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
 }
 
-/* Draggable style */
-.simple-modal.draggable .simple-modal-header:hover{
-  cursor: move;
-  background-color: #f8f8f8;
-  border-top-left-radius:           $border_radius;
-  border-top-right-radius:          $border_radius;
+.simple-modal.draggable .simple-modal-header:hover {
+	cursor: move;
+	background-color: $ghosted_color_hover;
+	border-top-left-radius: $border_radius;
+	border-top-right-radius: $border_radius;
 }
 
 /* Loading style */
-.simple-modal.loading{
-  .simple-modal-body{
-    min-height: 60px;
-  	background: transparent url("../images/loader.gif") no-repeat center center;
+.simple-modal.loading {
+	.simple-modal-body {
+		min-height: 60px;
+		background: transparent url("../images/loader.gif") no-repeat center center;
 
-  	div.contents{
-      display: none;
-    }
-  }
-  
-  .close, .simple-modal-header, .simple-modal-footer{
-    display: none;
-  }
+		div.contents {
+			display: none;
+		}
+	}
+
+	.close, .simple-modal-header, .simple-modal-footer{
+		display: none;
+	}
 }
 
-/* Hide header */
-.simple-modal.hide-header{
-  .simple-modal-header{
-    display: none;    
-  }
+.simple-modal.hide-header {
+	.simple-modal-header {
+		display: none;
+	}
 }
 
-/* Hide header */
-.simple-modal.hide-footer{
-  .simple-modal-footer{
-    display: none;    
-  }
+.simple-modal.hide-footer {
+	.simple-modal-footer {
+		display: none;
+	}
 }
