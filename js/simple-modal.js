@@ -61,7 +61,7 @@ provides:
         defaults: {
             onAppend:      null,
             offsetTop:     null,
-            overlayOpacity:.3,
+            overlayOpacity:.5,
             overlayColor:  "#000000",
             width:         "span4",
             draggable:     true,

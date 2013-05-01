@@ -22,18 +22,20 @@ $(document).ready(function(){
 			}, 250);
 		} else {
 			clearTimeout(timer);
-				crumbs = node.closest("ul").prev().text();
-
-			    $.fn.SimpleModal({
-			        btn_ok: 'Confirm button',
-			        model: 'confirm',
-			        callback: function(){
-			            alert('Action confirm!');
-			        },
-			        title: crumbs,
-			        contents: 'Lorem ipsum dolor sit amet...'
-			    }).showModal();
+			from = node.closest("ul").prev("li").text();
+			crumbs = from != "" ? from+" > "+node.text() : node.text();
 			clicks = 0;
+
+			$.fn.SimpleModal({
+				width: "span5",
+				model: 'modal-ajax',
+				title: crumbs,
+				param: {
+					url: 'info.php',
+					onRequestComplete: function() { },
+					onRequestFailure: function() { }
+				}
+			}).showModal();
 		}
 	});
 });
