@@ -8,9 +8,9 @@ html, body {
 }
 
 .canvas {
-	[class^="span"] ul {
+	ul[class^="span"] {
 		@extend .no_list_style;
-
+		
 		li {
 			position: relative;
 			box-sizing: border-box;
@@ -24,10 +24,10 @@ html, body {
 			-webkit-user-select: none;
 			user-select: none;
 
-			+ ul {
+			+ul {
 				width: 85%;
 				font-size: .85em;
-
+				
 				li {
 					margin: $span_margin/2 0;
 					padding: .85em;
