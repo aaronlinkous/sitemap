@@ -58,7 +58,7 @@ html>body #sortable li { height: 1.5em; line-height: 1.2em; }
 		$(function() {
 			$( "ul" ).sortable({
 				connectWith: "ul",
-				//placeholder: "primary",
+				placeholder: "placeholder",
 				dropOnEmpty: true,
 				update: function(event, ui) {
 			        //alert(getObjID());
