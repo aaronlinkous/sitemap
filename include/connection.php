@@ -12,7 +12,6 @@ function dbConnect() {
 		$dbConnString = "mysql:host=" . $dbInfo['database_target'] . "; dbname=" . $dbInfo['database_name']."; charset=UTF8";
 		$dbh = new PDO($dbConnString, $dbInfo['username'], $dbInfo['password']);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		//$dbh->exec("SET CHARACTER SET utf8");
 	}catch(PDOException $e) {
 		echo $e->getMessage();
 	}
@@ -21,25 +20,16 @@ function dbConnect() {
 
 function dbQuery($queryString) {
 	global $dbh;
-	
 	$row = $dbh->query($queryString);
 	$query = $row->fetchAll(PDO::FETCH_ASSOC);
 	return $query;
-/*
-	$i = 0;
-	echo '<pre>';
-	print_r($query);
-	echo '</pre>';
-	foreach ($query as $query2) {
-		$queryReturn[$i] = $query2;
-		$i++;
-	}
-	if($i > 1) {
-		return $queryReturn;
-	} else {
-		return $queryReturn[0];
-	}
-*/
+}
+
+function dbUpdate($queryString) {
+	global $dbh;
+	$affected_rows = $dbh->exec($queryString);
+	return $affected_rows;
+
 }
 
 function dbClose(){

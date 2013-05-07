@@ -1,3 +1,37 @@
+$(function() {
+	$( "ul.sortable" ).sortable({
+		connectWith: 	".sortable",
+		placeholder: 	"placeholder",
+		dropOnEmpty: 	true,
+		cursor: 		"move",
+		opacity: 		0.7
+	}).disableSelection();
+
+});
+
+function getObjID(){
+	var json = new Array();
+	var order = new Array();
+	$("ul.sortable li").each(function(index){
+		var obj = {};
+		var id = $(this).attr("id").split(/_/);
+		obj.id = Number(id[1]);
+		
+		var parent = $(this).parent().parent().attr("id");
+		if (parent == undefined){
+			obj.pid = 0;
+		} else {
+			parent = parent.split(/_/);
+			obj.pid = Number(parent[1]);
+		}
+		if (order[obj.pid] == null) order[obj.pid] = 0;
+		order[obj.pid]++;
+		obj.order = order[obj.pid];
+		json.push(obj)
+	});
+	return json;
+}
+
 function is_parent() {
 	$("li").each(function(){
 		$(this).next().is("ul") ? $(this).addClass("parent") : $(this).removeClass("parent");
@@ -38,4 +72,19 @@ $(document).ready(function(){
 			}).showModal();
 		}
 	});
+	
+	$("#save_btn").click(function(){
+		$.ajax({
+			type: "POST",
+			url: "save.php",
+			cache: false,
+			dataType: "json",
+			data: "data="+JSON.stringify(getObjID()),
+			success: function(data) {
+               alert(data.respond);
+            }
+		});		
+	});
+	
+	
 });

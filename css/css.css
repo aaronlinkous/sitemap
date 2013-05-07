@@ -1005,12 +1005,12 @@ html, body {
   user-select: none;
 }
 /* line 27, ../scss/_base.scss */
-.canvas ul[class^="span"] li + ul {
+.canvas ul[class^="span"] li ul {
   width: 85%;
   font-size: .85em;
 }
 /* line 31, ../scss/_base.scss */
-.canvas ul[class^="span"] li + ul li {
+.canvas ul[class^="span"] li ul li {
   margin: 10px 0;
   padding: .85em;
 }
