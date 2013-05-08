@@ -14,10 +14,11 @@
 		$class_li_primary 	= 'primary';
 		$class_li_accent 	= 'joint accent';
 	
-		if (is_null($pid))
+		if (is_null($pid)){
 			$menus = dbQuery("SELECT * FROM sitemap WHERE pid IS NULL ORDER BY `order` ASC;");
-		else 
+		} else {
 			$menus = dbQuery("SELECT * FROM sitemap WHERE pid = $pid ORDER BY `order` ASC;");
+		}
 		if (!empty($menus)) {
 			if (!is_null($pid)) $sitemap_html .= '<ul class="sortable">';
 			foreach($menus as $menu){
