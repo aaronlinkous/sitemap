@@ -1,3 +1,3 @@
 <div class="span5">
-	Content
+    Content
 </div>
