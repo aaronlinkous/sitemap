@@ -9,7 +9,7 @@ class db {
         $dbInfo['database_target'] = "127.0.0.1";
         $dbInfo['database_name'] = "sitemap";
         $dbInfo['username'] = "root";
-        $dbInfo['password'] = "";
+        $dbInfo['password'] = "dbpass";
 
         try {
             $dbConnString = "mysql:host=" . $dbInfo['database_target'] . "; dbname=" . $dbInfo['database_name'] . "; charset=UTF8";
